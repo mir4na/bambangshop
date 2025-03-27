@@ -78,6 +78,12 @@ This is the place for you to write reflections:
 
 #### Reflection Publisher-1
 
+1. Pada saat ini, menurut saya struct Subscriber sudah cukup karena fungsionalitasnya sederhana (hanya menyimpan data URL dan nama). Namun, jika nantinya ada kebutuhan untuk berbagai jenis subscriber dengan perilaku yang berbeda, maka menggunakan trait akan lebih sesuai dengan prinsip Observer pattern. Trait memungkinkan fleksibilitas dalam implementasi sehingga publisher (BambangShop) tidak perlu tahu detail cara subscriber menerima notifikasi (hanya perlu memanggil method standarnya saja).
+
+2. Penggunaan DashMap lebih efisien daripada Vec karena DashMap menyimpan data dalam bentuk key-value (dalam hal ini, URL sebagai key). Operasi seperti menambah, menghapus, atau mencari subscriber berdasarkan URL bisa dilakukan dalam waktu konstan (O(1)), sedangkan Vec memerlukan iterasi linear (O(n)) untuk operasi yang sama. Lalu, karena URL bersifat unik, struktur map lebih cocok untuk menghindari duplikasi dan memastikan pencarian value dengan cepat. 
+
+3. Menurut saya, DashMap sudah merupakan solusi yang tepat karena menggabungkan HashMap yang thread-safe dengan dukungan concurrency. Meskipun Singleton pattern bisa diimplementasikan secara manual (misalnya dengan Mutex), DashMap lebih efisien karena dirancang untuk multi-threading. Singleton manual mungkin memerlukan pengelolaan locking yang rumit dan berisiko deadlock, sedangkan DashMap menangani sinkronisasi secara internal. Jadi, DashMap lebih sesuai untuk kasus ini karena sekaligus memenuhi pola Singleton (melalui lazy_static).
+
 #### Reflection Publisher-2
 
 #### Reflection Publisher-3
