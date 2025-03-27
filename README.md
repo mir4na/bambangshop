@@ -86,4 +86,10 @@ This is the place for you to write reflections:
 
 #### Reflection Publisher-2
 
+1. Pemisahan dilakukan untuk mematuhi prinsip Single Responsibility Principle (SRP). Model sebaiknya hanya mewakili struktur data dan validasi dasar, Repository fokus pada interaksi dengan penyimpanan (seperti database), sedangkan Service menangani logika programnya. Dengan pemisahan ini, kode menjadi lebih modular, mudah dilakukan testing, dan scalable. Jika semua logika dimasukkan ke dalam Model, kelas akan menjadi terlalu besar dan sulit dikelola saat sistem berkembang.
+
+2. Jika hanya mengandalkan Model tanpa Service dan Repository, interaksi antar-objek (seperti Product, Subscriber, dan Notification) akan menjadi rumit karena logika program dan akses data tercampur. Misalnya, Product harus langsung mengelola daftar subscriber dan mengirim notifikasi sehingga kode menjadi tightly coupled dan sulit diubah. Kompleksitas akan meningkat saat menambahkan fitur baru seperti error handling, logging, atau optimasi query karena semua logika harus dimasukkan ke dalam Model.
+
+3. Menurut saya, Postman sangat membantu dalam menguji API secara manual maupun otomatis. Fitur seperti Collections, Environments, dan Automated Testing memudahkan saya untuk memverifikasi fungsionalitas API. Untuk kasus ini, Postman bisa digunakan untuk memastikan endpoint /subscribe dan /unsubscribe bekerja sesuai ekspektasi sebelum diintegrasikan dengan frontend.
+
 #### Reflection Publisher-3
